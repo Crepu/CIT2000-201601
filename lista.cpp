@@ -41,6 +41,7 @@ public:
             cout<<aux->valor<<"->";
             aux = aux->next;
         }
+        cout<<"\n";
     }
 
     Nodo *buscar(int n){
@@ -78,28 +79,47 @@ public:
     }
 
     void agregarR(Nodo *nuevo, Nodo *p){
-    	if (!head){
-    		head = nuevo;
-    	}
-    	else{
-    		if(p && !p->next){
-    			p->next = nuevo;
-    		}
-    		else if(!p){
-    			agregarR(nuevo,head);
-    		}
-    		else if(p && p->next){
-    			agregarR(nuevo, p->next);
-    		}
-    		else{
-    			return;
+        if (!head){
+            head = nuevo;
+        }
+        else{
+            if(p && !p->next){
+                p->next = nuevo;
+            }
+            else if(!p){
+                agregarR(nuevo,head);
+            }
+            else if(p && p->next){
+                agregarR(nuevo, p->next);
+            }
+            else{
+                return;
 
-    		}
-    	}
+            }
+        }
     }
     void eliminarR(int valor, Nodo *posicion){
         //Hacer este método.
-        
+                if(!head){
+            return;
+        }
+        else{
+
+            if (head->valor == valor){
+                head = head->next;
+                return;
+            }
+            if (posicion->next && posicion->next->valor == valor){
+                posicion->next = posicion->next->next;
+                return;
+            }
+            else if(!posicion -> next){
+                eliminarR(valor,head);
+            }
+            else{
+                eliminarR(valor, posicion->next);
+            }
+        }
     }
 
 };
@@ -108,14 +128,29 @@ public:
     lista *L = new lista();
     Nodo *aux = new Nodo(8);
     L->agregarR(aux,L->head);
-    aux = new Nodo(7);
-    L->agregarR(aux,L->head);
     aux = new Nodo(6);
     L->agregarR(aux,L->head);
+    aux = new Nodo(7);
+    L->agregarR(aux,L->head);
     L->imprimir();
-    cout<<"\n";
+
+    L->eliminarR(7,L->head);
+    L->imprimir();
+
+    aux = new Nodo(7);
+    L->agregarR(aux,L->head);    
+    L->imprimir();
+
+    L->eliminarR(6,L->head);
+    L->imprimir();
+    
+    aux = new Nodo(6);
+    L->agregarR(aux,L->head);    
+    L->imprimir();
+
     L->eliminarR(8,L->head);
     L->imprimir();
-    cout<<"\n";
+
+
     //cout<<aux->valor<<endl;
 }
