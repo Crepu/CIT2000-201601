@@ -71,14 +71,38 @@ float deuda_total_edificio(Departamento *p){
 
 }
 
+float gastos_mensuales_piso(int p, Departamento *p){
+	float suma_gastos = 0;
+	Departamento *aux = p;
+	while(aux){
+		suma_gastos += aux->agua_mes 
+						+ aux->agua_deuda
+						+ aux->gas_mes
+						+ aux->gas_deuda
+						+ aux->internet_mes
+						+ aux->internet_deuda
+						+ aux->corriente_mes
+						+ aux->corriente_deuda;
+		aux = aux->depto_sig;
+	}
+	aux = p->depto_ant;
+	while(aux){
+		suma_gastos += aux->agua_mes 
+						+ aux->agua_deuda
+						+ aux->gas_mes
+						+ aux->gas_deuda
+						+ aux->internet_mes
+						+ aux->internet_deuda
+						+ aux->corriente_mes
+						+ aux->corriente_deuda;
+		aux = aux->depto_ant;
+	}
 
-
-float gastos_mensuales_piso(int p){
-
+	return suma_gastos;
 }
 
 int departamentos_desocupados(Departamento *p){
-
+	//Es igual al primero.	
 }
 
 };
