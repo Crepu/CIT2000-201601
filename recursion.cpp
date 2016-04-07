@@ -27,7 +27,7 @@ int foo(int x, int y){
 
 int main()
 {
-	cout<<foo(3,1)<<endl;
+	cout<<foo(4,1)<<endl;
 	return 0;
 }
 

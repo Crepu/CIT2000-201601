@@ -25,14 +25,15 @@ bool balanced(string par){
 		}
 	}
 	if(pila.size() != 0) return false;
+	return true;
 }
 
 int main(int argc, char const *argv[])
 {
 	string par;
 	cin>>par;
-	if(balanced(par)) cout<<"balanced"<<endl;
-	else cout<<"unbalanced"<<endl;
+	cout<<balanced(par)<<endl;
+	//else cout<<"unbalanced"<<endl;
 
 
 	return 0;
